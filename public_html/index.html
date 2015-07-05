@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Yipeng and Yihe lama</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body id="main">
+        <canvas id="plane" width="1000" height="1000"></canvas>
+        <script type="text/javascript">
+            //document.getElementById('main').addEventListener('keypress', p);
+            //function p(e) {alert(e.which)}
+            
+            var x = 0;
+            var y = 0;
+            var speed = 5;
+            var random = Math.floor((Math.random() * 4) + 1);
+            var random_image = Math.floor((Math.random() * 4) + 1);
+            var imageObj = new Image();
+            switch (random_image) {
+                case 1:
+                    imageObj.src = "image/lama.jpg";
+                    break;
+                case 2:
+                    imageObj.src = "image/lama2.jpg";
+                    break;
+                case 3:
+                    imageObj.src = "image/lama3.jpg";
+                    break;
+                case 4:
+                    imageObj.src = "image/lama4.jpg";
+                    break;
+            }
+
+            function animate() {
+
+                reqAnimFrame = window.mozRequestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        window.oRequestAnimationFrame
+                        ;
+
+                reqAnimFrame(animate);
+                switch (random) {
+                    case 1:
+                        y = (y - speed + 1000) % 1000;
+                        break;
+                    case 2:
+                        x = (x + speed) % 1000;
+                        break;
+                    case 3:
+                        y = (y + speed) % 1000;
+                        break;
+                    case 4:
+                        x = (x - speed + 1000) % 1000;
+                        break;
+                }
+
+                draw();
+            }
+
+            function draw() {
+                var canvas = document.getElementById("plane");
+                var context = canvas.getContext("2d");
+
+                context.clearRect(0, 0, 1000, 1000);
+                context.drawImage(imageObj, x, y, 200, 200);
+            }
+
+            setInterval(animate(), 1000000);
+       
+        
+        
+        </script>
+    </body>
+</html>
