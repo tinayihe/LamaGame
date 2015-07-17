@@ -16,12 +16,23 @@ and open the template in the editor.
             //document.getElementById('main').addEventListener('keypress', p);
             //function p(e) {alert(e.which)}
             
+            var mode = Math.floor((Math.random() * 2) + 1);        
             var x = 0;
             var y = 0;
             var speed = 5;
             var random = Math.floor((Math.random() * 4) + 1);
+            //random for image, 1:up 2:right 3:down 4:left
             var random_image = Math.floor((Math.random() * 4) + 1);
             var imageObj = new Image();
+            
+            if (mode == 1){
+               document.getElementById("main").style.background = "#00FF7F";
+            }
+            else{
+                document.getElementById("main").style.background = "#FF2400";                ;
+            }
+                
+                
             switch (random_image) {
                 case 1:
                     imageObj.src = "image/lama.jpg";
