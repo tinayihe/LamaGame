@@ -135,22 +135,22 @@
 
             function jumpPage(event){
                 switch (event.keyCode) {
-                    case 81:
+                    case 37:
                         left();
                         break;
-                    case 90:
+                    case 38:
                         up();
                         break;
-                    case 68:
+                    case 39:
                         right();
                         break;
-                    case 83:
+                    case 40:
                         down();
                         break;
                 }
             }
             
-            document.onkeydown = jumpPage(); // this code does not get the point and causes error
+            document.addEventListener("keydown", jumpPage);
         </script>
     </body>
 </html>
