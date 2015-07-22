@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Yipeng and Yihe lama</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width">
         <style type="text/css">
-            * { margin: 0; padding: 0; }     
- ²  ²     html, body { height: 100%; width: 100%; }     
-            canvas { display: block; }  
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html, body {
+                height: 100%;
+                width: 100%;
+            }
+
+            canvas {
+                display: block;
+            }  
         </style>
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
     <body id="main">
         <canvas id="plane"></canvas>
-  
         <script type="text/javascript">
             //document.getElementById('main').addEventListener('keypress', p);
             //function p(e) {alert(e.which)}
@@ -35,42 +42,44 @@ and open the template in the editor.
             var h = document.body.clientHeight;
             var w = document.body.clientWidth;
             var canvas = document.getElementById("plane");
+            
             //remain the right part for score
-                canvas.width = 0.9*w;
-                
-                canvas.height = h;
-                //我让他先蹦出来一个她的height是多少。。。
-                alert(h);
-           
-          function initial(){ 
-            if (mode == 1){
-                //vert: selon movement direction
-               document.getElementById("plane").style.background = "#00FF7F";
+            canvas.width = 0.9*w;
+            canvas.height = h;
+            
+            //我让他先蹦出来一个她的height是多少。。。
+            alert(h);
+
+            function initial(){
+                // change dynamic canvas bg
+                if (mode === 1){
+                    //vert: selon movement direction
+                    document.getElementById("plane").style.background = "#00FF7F";
+                } else {
+                    //rouge: selon image direction
+                    document.getElementById("plane").style.background = "#FF2400";                ;
+                }
+
+                // change randomly lama image
+                switch (random_image) {
+                    case 1:
+                        imageObj.src = "image/lama.jpg";
+                        break;
+                    case 2:
+                        imageObj.src = "image/lama2.jpg";
+                        break;
+                    case 3:
+                        imageObj.src = "image/lama3.jpg";
+                        break;
+                    case 4:
+                        imageObj.src = "image/lama4.jpg";
+                        break;
+                }
+
+                setInterval(animate(), 1000000);
             }
-            else{
-                //rouge: selon image direction
-                document.getElementById("plane").style.background = "#FF2400";                ;
-            }
-                                
-            switch (random_image) {
-                case 1:
-                    imageObj.src = "image/lama.jpg";
-                    break;
-                case 2:
-                    imageObj.src = "image/lama2.jpg";
-                    break;
-                case 3:
-                    imageObj.src = "image/lama3.jpg";
-                    break;
-                case 4:
-                    imageObj.src = "image/lama4.jpg";
-                    break;
-            }
-             setInterval(animate(), 1000000);   
-        }
 
             function animate() {
-
                 reqAnimFrame = window.mozRequestAnimationFrame ||
                         window.webkitRequestAnimationFrame ||
                         window.msRequestAnimationFrame ||
@@ -78,18 +87,22 @@ and open the template in the editor.
                         ;
 
                 reqAnimFrame(animate);
-                random=2;
+                random = 2;
                 switch (random) {
                     case 1:
+                        // move up
                         y = (y - speed + 1000) % 1000;
                         break;
                     case 2:
+                        // move right
                         x = (x + speed) % 1000;
                         break;
                     case 3:
+                        // move down
                         y = (y + speed) % 1000;
                         break;
                     case 4:
+                        // move left
                         x = (x - speed + 1000) % 1000;
                         break;
                 }
@@ -98,34 +111,45 @@ and open the template in the editor.
             }
 
             function draw() {
-                
                 var context = canvas.getContext("2d");
                 context.clearRect(0, 0, 1500, 1500);
                 context.drawImage(imageObj, x, y, 200, 200);
             }
             
             initial();
+
+            // !!! these functions are not necessary
+            function up(){
+                alert("up");
+            }
+            function down(){
+                alert("down");
+            }
+            function left(){
+                alert("left");
+            }
+            function right(){
+                alert("right");
+            }
+
+            function jumpPage(event){
+                switch (event.keyCode) {
+                    case 81:
+                        left();
+                        break;
+                    case 90:
+                        up();
+                        break;
+                    case 68:
+                        right();
+                        break;
+                    case 83:
+                        down();
+                        break;
+                }
+            }
+            
+            document.onkeydown = jumpPage(); // this code does not get the point and causes error
         </script>
-             <script type="text/javascript">
-　　function up(){ alert("up");}
-     function down(){alert("down");}
-　　function left(){ alert("left");}
-     function right(){alert("right");}
-　　function jumpPage(){
-　　　　if(event.keyCode==81){
-　　　　　　left(); return ;
-　　　　}
-　　　　if(event.keyCode==90){
-　　　　　　 up();return ;
-　　　　}
-　　　　 if(event.keyCode==68){
-　　　　　　right();return ;
-　　　　}
-　　　　if(event.keyCode==83){
-　　　　　　down();return ;
-　　　　}
-　　　　document.onkeydown=jumpPage();
-　　}
-</script>
     </body>
 </html>
