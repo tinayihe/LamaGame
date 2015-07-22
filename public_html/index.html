@@ -50,9 +50,10 @@
             //我让他先蹦出来一个她的height是多少。。。
             alert(h);
 
-            function initial(){
+            function initial(){ // !!! no space between function name and the starting {
                 // change dynamic canvas bg
-                if (mode === 1){
+                // !!! one space between if, else, for, while... and the starting (, then one space between ) and {
+                if (mode === 1) {
                     //vert: selon movement direction
                     document.getElementById("plane").style.background = "#00FF7F";
                 } else {
@@ -79,7 +80,7 @@
                 setInterval(animate(), 1000000);
             }
 
-            function animate() {
+            function animate(){
                 reqAnimFrame = window.mozRequestAnimationFrame ||
                         window.webkitRequestAnimationFrame ||
                         window.msRequestAnimationFrame ||
@@ -110,7 +111,7 @@
                 draw();
             }
 
-            function draw() {
+            function draw(){
                 var context = canvas.getContext("2d");
                 context.clearRect(0, 0, 1500, 1500);
                 context.drawImage(imageObj, x, y, 200, 200);
