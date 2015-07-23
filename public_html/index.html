@@ -45,7 +45,7 @@
             var score = 0;
             
             //remain the right part for score
-            canvas.width = 0.9*w;
+            canvas.width = 0.9 * w;
             canvas.height = h;
 
             function initial(){ // !!! no space between function name and the starting {
@@ -86,23 +86,23 @@
                         ;
 
                 reqAnimFrame(animate);
-                random = 2;
+                //random = 2;
                 switch (random) {
                     case 1:
                         // move up
-                        y = (y - speed + 1000) % 1000;
+                        y = (y - speed + canvas.height) % canvas.height;
                         break;
                     case 2:
                         // move right
-                        x = (x + speed) % 1000;
+                        x = (x + speed) % canvas.width;
                         break;
                     case 3:
                         // move down
-                        y = (y + speed) % 1000;
+                        y = (y + speed) % canvas.height;
                         break;
                     case 4:
                         // move left
-                        x = (x - speed + 1000) % 1000;
+                        x = (x - speed + canvas.width) % canvas.width;
                         break;
                 }
 
@@ -111,7 +111,7 @@
 
             function draw(){
                 var context = canvas.getContext("2d");
-                context.clearRect(0, 0, 1500, 1500);
+                context.clearRect(0, 0, canvas.width, canvas.height);
                 context.drawImage(imageObj, x, y, 200, 200);
             }
             
