@@ -42,13 +42,11 @@
             var h = document.body.clientHeight;
             var w = document.body.clientWidth;
             var canvas = document.getElementById("plane");
+            var score = 0;
             
             //remain the right part for score
             canvas.width = 0.9*w;
             canvas.height = h;
-            
-            //我让他先蹦出来一个她的height是多少。。。
-            alert(h);
 
             function initial(){ // !!! no space between function name and the starting {
                 // change dynamic canvas bg
@@ -118,39 +116,59 @@
             }
             
             initial();
-
-            // !!! these functions are not necessary
-            function up(){
-                alert("up");
-            }
-            function down(){
-                alert("down");
-            }
-            function left(){
-                alert("left");
-            }
-            function right(){
-                alert("right");
-            }
-
-            function jumpPage(event){
-                switch (event.keyCode) {
+            
+            function point(event){
+                if (mode === 1) {
+                    switch (event.keyCode) {
                     case 37:
-                        left();
+                        if (random === 4){
+                            score++;
+                        }
                         break;
                     case 38:
-                        up();
+                        if (random === 1){
+                            score++;
+                        }
                         break;
                     case 39:
-                        right();
+                        if (random === 2){
+                            score++;
+                        }
                         break;
                     case 40:
-                        down();
+                        if (random === 3){
+                            score++;
+                        }
                         break;
+                    }
+                }else {
+                    switch (event.keyCode) {
+                    case 37:
+                        if (random_image === 4){
+                            score++;
+                        }
+                        break;
+                    case 38:
+                        if (random_image === 1){
+                            score++;
+                        }
+                        break;
+                    case 39:
+                        if (random_image === 2){
+                            score++;
+                        }
+                        break;
+                    case 40:
+                        if (random_image === 3){
+                            score++;
+                        }
+                        break;
+                    }
                 }
+                alert(score);
             }
             
-            document.addEventListener("keydown", jumpPage);
+            document.addEventListener("keydown", point);            
         </script>
     </body>
 </html>
