@@ -87,22 +87,24 @@
 
                 reqAnimFrame(animate);
                 //random = 2;
+                var limitWidth = canvas.width - imageObj.width;
+                var limitHeight = canvas.height - imageObj.height;
                 switch (random) {
                     case 1:
                         // move up
-                        y = (y - speed + canvas.height) % canvas.height;
+                        y = (y - speed + limitHeight) % limitHeight;
                         break;
                     case 2:
                         // move right
-                        x = (x + speed) % canvas.width;
+                        x = (x + speed) % limitWidth;
                         break;
                     case 3:
                         // move down
-                        y = (y + speed) % canvas.height;
+                        y = (y + speed) % limitHeight;
                         break;
                     case 4:
                         // move left
-                        x = (x - speed + canvas.width) % canvas.width;
+                        x = (x - speed + limitWidth) % limitWidth;
                         break;
                 }
 
@@ -112,7 +114,7 @@
             function draw(){
                 var context = canvas.getContext("2d");
                 context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(imageObj, x, y, 200, 200);
+                context.drawImage(imageObj, x, y);
             }
             
             initial();
