@@ -26,41 +26,39 @@
     <body id="main">
         <canvas id="plane"></canvas>
         <script type="text/javascript">
-            //document.getElementById('main').addEventListener('keypress', p);
-            //function p(e) {alert(e.which)}
-           
             var mode = Math.floor((Math.random() * 2) + 1);        
+            
+            // lama settings
             var x = 0;
             var y = 0;
             var speed = 5;
-            var random = Math.floor((Math.random() * 4) + 1);
-            //random for image, 1:up 2:right 3:down 4:left
-            var random_image = Math.floor((Math.random() * 4) + 1);
+            var moveDirection = Math.floor((Math.random() * 4) + 1); //1:up 2:right 3:down 4:left
+            var imageDirection = Math.floor((Math.random() * 4) + 1); //1:up 2:right 3:down 4:left
             var imageObj = new Image();
             
-            //自动调节尺寸，感觉width好用但是height并没有什么卵用。。。
+            // canvas settings
             var h = document.body.clientHeight;
             var w = document.body.clientWidth;
             var canvas = document.getElementById("plane");
+            
             var score = 0;
             
-            //remain the right part for score
+            // remain the right part of the page for score
             canvas.width = 0.9 * w;
             canvas.height = h;
 
-            function initial(){ // !!! no space between function name and the starting {
+            function initial(){
                 // change dynamic canvas bg
-                // !!! one space between if, else, for, while... and the starting (, then one space between ) and {
                 if (mode === 1) {
-                    //vert: selon movement direction
+                    // green
                     document.getElementById("plane").style.background = "#00FF7F";
                 } else {
-                    //rouge: selon image direction
+                    // red
                     document.getElementById("plane").style.background = "#FF2400";                ;
                 }
 
                 // change randomly lama image
-                switch (random_image) {
+                switch (imageDirection) {
                     case 1:
                         imageObj.src = "image/lama.png";
                         break;
@@ -89,7 +87,7 @@
                 //random = 2;
                 var limitWidth = canvas.width - imageObj.width;
                 var limitHeight = canvas.height - imageObj.height;
-                switch (random) {
+                switch (moveDirection) {
                     case 1:
                         // move up
                         y = (y - speed + limitHeight) % limitHeight;
@@ -123,45 +121,45 @@
                 if (mode === 1) {
                     switch (event.keyCode) {
                     case 37:
-                        if (random === 4){
+                        if (moveDirection === 4){
                             score++;
                         }
                         break;
                     case 38:
-                        if (random === 1){
+                        if (moveDirection === 1){
                             score++;
                         }
                         break;
                     case 39:
-                        if (random === 2){
+                        if (moveDirection === 2){
                             score++;
                         }
                         break;
                     case 40:
-                        if (random === 3){
+                        if (moveDirection === 3){
                             score++;
                         }
                         break;
                     }
-                }else {
+                } else {
                     switch (event.keyCode) {
                     case 37:
-                        if (random_image === 4){
+                        if (imageDirection === 4){
                             score++;
                         }
                         break;
                     case 38:
-                        if (random_image === 1){
+                        if (imageDirection === 1){
                             score++;
                         }
                         break;
                     case 39:
-                        if (random_image === 2){
+                        if (imageDirection === 2){
                             score++;
                         }
                         break;
                     case 40:
-                        if (random_image === 3){
+                        if (imageDirection === 3){
                             score++;
                         }
                         break;
