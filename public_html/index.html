@@ -26,14 +26,13 @@
     <body id="main">
         <canvas id="plane"></canvas>
         <script type="text/javascript">
-            var mode = Math.floor((Math.random() * 2) + 1);        
-            
-            // lama settings
+            var mode = 0;        
             var x = 0;
             var y = 0;
+            // lama settings
             var speed = 5;
-            var moveDirection = Math.floor((Math.random() * 4) + 1); //1:up 2:right 3:down 4:left
-            var imageDirection = Math.floor((Math.random() * 4) + 1); //1:up 2:right 3:down 4:left
+            var moveDirection = 0;
+            var imageDirection = 0;
             var imageObj = new Image();
             
             // canvas settings
@@ -46,8 +45,52 @@
             // remain the right part of the page for score
             canvas.width = 0.9 * w;
             canvas.height = h;
+            
+            function animate(){
+                reqAnimFrame = window.mozRequestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        window.oRequestAnimationFrame
+                        ;
+
+                reqAnimFrame(animate);
+                //random = 2;
+                var limitWidth = canvas.width - imageObj.width;
+                var limitHeight = canvas.height - imageObj.height;
+                    switch (moveDirection) {
+                        case 1:
+                            // move up
+                            y = (y - speed + limitHeight) % limitHeight;
+                            break;
+                        case 2:
+                            // move right
+                            x = (x + speed) % limitWidth;
+                            break;
+                        case 3:
+                            // move down
+                            y = (y + speed) % limitHeight;
+                            break;
+                        case 4:
+                            // move left
+                            x = (x - speed + limitWidth) % limitWidth;
+                            break;
+                    }                    
+                    draw();
+                }
+
+                function draw(){
+                    var context = canvas.getContext("2d");
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(imageObj, x, y);
+                }
 
             function initial(){
+                x = 0;
+                y = 0;
+                speed = 5;
+                mode = Math.floor((Math.random() * 2) + 1);
+                moveDirection = Math.floor((Math.random() * 4) + 1); //1:up 2:right 3:down 4:left
+                imageDirection = Math.floor((Math.random() * 4) + 1);//1:up 2:right 3:down 4:left
                 // change dynamic canvas bg
                 if (mode === 1) {
                     // green
@@ -71,101 +114,94 @@
                     case 4:
                         imageObj.src = "image/lama4.png";
                         break;
-                }
-
-                setInterval(animate(), 1000000);
-            }
-
-            function animate(){
-                reqAnimFrame = window.mozRequestAnimationFrame ||
-                        window.webkitRequestAnimationFrame ||
-                        window.msRequestAnimationFrame ||
-                        window.oRequestAnimationFrame
-                        ;
-
-                reqAnimFrame(animate);
-                //random = 2;
-                var limitWidth = canvas.width - imageObj.width;
-                var limitHeight = canvas.height - imageObj.height;
-                switch (moveDirection) {
-                    case 1:
-                        // move up
-                        y = (y - speed + limitHeight) % limitHeight;
-                        break;
-                    case 2:
-                        // move right
-                        x = (x + speed) % limitWidth;
-                        break;
-                    case 3:
-                        // move down
-                        y = (y + speed) % limitHeight;
-                        break;
-                    case 4:
-                        // move left
-                        x = (x - speed + limitWidth) % limitWidth;
-                        break;
-                }
-
-                draw();
-            }
-
-            function draw(){
-                var context = canvas.getContext("2d");
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(imageObj, x, y);
-            }
-            
+                }             
+                                 
+                setInterval(animate(x, y, speed), 1000000);
+            }         
+                            
             initial();
             
             function point(event){
                 if (mode === 1) {
                     switch (event.keyCode) {
                     case 37:
-                        if (moveDirection === 4){
+                        if (moveDirection === 4) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 38:
-                        if (moveDirection === 1){
+                        if (moveDirection === 1) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 39:
-                        if (moveDirection === 2){
+                        if (moveDirection === 2) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 40:
-                        if (moveDirection === 3){
+                        if (moveDirection === 3) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     }
                 } else {
                     switch (event.keyCode) {
                     case 37:
-                        if (imageDirection === 4){
+                        if (imageDirection === 4) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 38:
-                        if (imageDirection === 1){
+                        if (imageDirection === 1) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 39:
-                        if (imageDirection === 2){
+                        if (imageDirection === 2) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     case 40:
-                        if (imageDirection === 3){
+                        if (imageDirection === 3) {
                             score++;
+                            alert(score);
+                        }                        
+                        else {
+                            alert("Game over\nYour score:"+score);
                         }
                         break;
                     }
                 }
-                alert(score);
+                initial();
             }
             
             document.addEventListener("keydown", point);            
