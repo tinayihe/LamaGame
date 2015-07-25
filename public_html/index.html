@@ -114,12 +114,11 @@
                     case 4:
                         imageObj.src = "image/lama4.png";
                         break;
-                }             
-                                 
-                setInterval(animate(x, y, speed), 1000000);
+                }
             }         
                             
             initial();
+            animate();
             
             function point(event){
                 if (mode === 1) {
