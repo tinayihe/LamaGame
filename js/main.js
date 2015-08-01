@@ -1,4 +1,4 @@
-var mode = 0;        
+var mode = 0;
 var x = 0;
 var y = 0;
 
@@ -47,7 +47,7 @@ function animate(){
             // move left
             x = (x - speed + limitWidth) % limitWidth;
             break;
-    }                    
+    }
     draw();
 }
 
@@ -85,11 +85,16 @@ function initial(){
             imageObj.src = "image/lama4.png";
             break;
     }
-    document.getElementById("scores").innerHTML=score; 
+    document.getElementById("scores").innerHTML=score;
 }
 
 initial();
 animate();
+
+function over(){
+  alert("Game over\nYour score:"+score);
+  window.location.reload();
+}
 
 function point(event){
     if (mode === 1) {
@@ -97,33 +102,29 @@ function point(event){
         case 37:
             if (moveDirection === 4) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 38:
             if (moveDirection === 1) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 39:
             if (moveDirection === 2) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 40:
             if (moveDirection === 3) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         }
@@ -132,33 +133,29 @@ function point(event){
         case 37:
             if (imageDirection === 4) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 38:
             if (imageDirection === 1) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 39:
             if (imageDirection === 2) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         case 40:
             if (imageDirection === 3) {
                 score++;
-                alert(score);
             } else {
-                alert("Game over\nYour score:"+score);
+                over();
             }
             break;
         }
@@ -167,3 +164,4 @@ function point(event){
 }
 
 document.addEventListener("keydown", point);
+setTimeout("over()",15000);
