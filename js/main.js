@@ -63,11 +63,11 @@ function initial(){
     imageDirection = Math.floor((Math.random() * 4) + 1);//1:up 2:right 3:down 4:left
     // change dynamic canvas bg
     if (mode === 1) {
-        // green
-        document.getElementById("plane").style.background = "#00FF7F";
+        // blue
+        document.getElementById("plane").style.background = "#00FFFF";
     } else {
-        // red
-        document.getElementById("plane").style.background = "#FF2400";
+        // yellow
+        document.getElementById("plane").style.background = "#FFFF00";
     }
 
     // change randomly lama image
@@ -92,7 +92,7 @@ initial();
 animate();
 
 function over(){
-  alert("Game over\nYour score:"+score);
+  alert("Game over\nYour score: "+score);
   window.location.reload();
 }
 
