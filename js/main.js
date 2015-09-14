@@ -54,7 +54,8 @@ function animate(){
 function draw(){
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(imageObj, x, y);
+    //context.drawImage(imageObj, x, y, 200, 150);
+    context.drawImage(imageObj, x, y, 0.2*canvas.width, 0.3*canvas.height);
 }
 
 function initial(){
