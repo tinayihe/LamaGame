@@ -93,8 +93,15 @@ initial();
 animate();
 
 function over(){
-  alert("Game over\nYour score: "+score);
-  window.location.reload();
+    //alert("Game over\nYour score: "+score);
+    $('.ui.basic.modal')
+        .modal({
+            closable: false,
+            onApprove: function(){
+                window.location.reload();
+            }
+        })
+        .modal('show');
 }
 
 function point(event){

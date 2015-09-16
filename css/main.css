@@ -15,7 +15,7 @@ canvas {
     float: left;
 }  
 
-div {
+#rest {
 	width: 20%;
 	height: 100%;
     float: left;
@@ -23,10 +23,10 @@ div {
     text-align: center;
 }
 
-div h1{
+#rest h1{
     font-size: 2.9vw;
 }
 
-div p{
+#rest p{
     font-size: 4vw;
 }
