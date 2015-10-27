@@ -102,6 +102,7 @@ function over(){
             }
         })
         .modal('show');
+    document.getElementById("finalScore").innerHTML=score;
 }
 
 function point(event){

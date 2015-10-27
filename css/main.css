@@ -27,6 +27,16 @@ canvas {
     font-size: 2.9vw;
 }
 
-#rest p{
+#scores{
     font-size: 4vw;
+}
+
+#finalScore{
+    font-size: 2.9vw;
+}
+
+#rule{
+    font-size: 1.5vw;
+    text-align: left;
+    padding-left: 1vw;
 }

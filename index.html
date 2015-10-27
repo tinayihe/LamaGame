@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Yipeng and Yihe lama</title>
+        <title>Lama Game</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -16,23 +16,41 @@
         <div id="rest">
             <h1>SCORES:</h1>
             <p id="scores"></p>
+            <p id="rule">Press &larr; &uarr; &rarr; &darr;<br/>
+              If (backgroud color = blue){<br/>
+              &nbsp;&nbsp;Follow the direction of the movement of Lama.<br/>
+            };<br/>
+            if (backgroud color = yellow){<br/>
+            &nbsp;&nbsp;Follow the direction of the head of Lama.<br/>
+            };<br/>
+            You have 15 seconds!
+            </p>
         </div>
 
         <div class="ui basic modal">
   <i class="close icon"></i>
   <div class="header">
-    Archive Old Messages
+    Your scores:
   </div>
   <div class="image content">
     <div class="image">
       <i class="archive icon"></i>
     </div>
     <div class="description">
-      <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+      <p id="finalScore"></p>
+      <p id="rule">Press &larr; &uarr; &rarr; &darr;<br/>
+              If (backgroud color = blue){<br/>
+              &nbsp;&nbsp;Follow the direction of the movement of Lama.<br/>
+            };<br/>
+            if (backgroud color = yellow){<br/>
+              &nbsp;&nbsp;Follow the direction of the head of Lama.<br/>
+            };<br/>
+            You have 15 seconds!
+      </p>
     </div>
   </div>
   <div class="actions">
-    <div class="ui approve button">Approve</div>
+    <div class="ui approve button">Try again</div>
   </div>
 </div>
 
